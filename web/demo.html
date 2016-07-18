@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+    <link rel="stylesheet" src="css/monthly.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_PxwQL6a39xhzoDvjWssZotTBTKFLzCU"></script>
+	<script type="text/javascript" src="plugins/monthly.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</style>
+</head>
+<body>
+	<!-- menu page -->
+	<div data-role="page" data-title="TEST">
+		<div style="height: 40px"  data-role="header" data-theme="b" id="menu_page_headr"></div>
+		<div style="height: 500px" id="menu_page">
+			<a id="test" href="#main" data-role="button">Demo Start</a>
+
+		</div>
+		<div style="height: 40px" data-role="footer" data-theme="b"></div>
+	</div>
+
+
+	<!-- main page -->
+	<div data-role="page" id="main">
+        <!-- header -->
+        <div style="height: 40px"  data-role="header" data-theme="b"></div>
+
+        <table>
+       		<td ><div id="mapArea" style="height:500px; width:500px;"></div></td>
+       		<td ><div id="cookingInfoArea" style="height:500px; width:500px;">
+						<div style="padding: 20px;">
+							<h3>今回の冒険のテーマは</h3>
+							<h2>カレー</h2>
+							<h3>です。</h3>
+							<img src="img/recipe.png" width="400px">
+							<a style="height: 40px;" data-role="button" id="zakkuriButton" data-icon="star">ざっくり言うと</a>
+						</div>
+					</div></td>
+       	</table>
+       	<!-- footer
+        <div style="height: 40px" data-role="footer" data-theme="b">
+            <a style="height: 40px;" data-role="button" id="testButton" data-icon="delete">test buttone</a>
+        </div>-->
+    </div>
+
+
+
+
+
+		<script type="text/javascript">
+			$(window).load(function() {
+				getJson();
+				$("#zakkuriButton").bind("click", function(event){
+					getRecipe();
+				});
+
+				$("#main").bind("pageshow", function(event){
+					drawMap();
+				});
+
+			});
+
+		</script>
+
+</body>
